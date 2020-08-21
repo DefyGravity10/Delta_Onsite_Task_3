@@ -7,6 +7,8 @@ var oreo_limit=3;
 
 var startOreo_x;
 
+document.getElementById("page2").style.display="none";
+
 var canvas = document.getElementById("canvas");
 canvas.width=window.innerWidth-40;
 canvas.height=window.innerHeight-75;
@@ -14,6 +16,12 @@ var ctx = canvas.getContext("2d");
 ctx.strokeStyle="black";
 
 ctx.lineWidth=3;
+
+function start()
+{
+    document.getElementById("homePage").style.display="none";
+    document.getElementById("page2").style.display="block";
+}
 
 function Stack(){
     stack_of_obj.length=0;

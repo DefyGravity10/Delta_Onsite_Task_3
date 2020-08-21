@@ -6,11 +6,19 @@
     </head>
     <body>
         <main>
-            <input type="text" id="string" value="Enter String">
+            <div id="homePage">
+                <h1 id="title">OREO STACKING</h1>
+                <p id="desc">Create an oreo of your dreams by stacking!</p>
+                <button type="button" class="button button 1" onclick="start()">OREO</button>
+            </div>
+
+            <div id="page2">
+            <input type="text" id="string" placeholder="Enter String">
             <button type="button" class="button" onclick="Stack()">GENERATE</button>
 
             <div id="canvasPage">
                 <canvas id="canvas"></canvas>
+            </div>
             </div>
         
         <script src="Oreo.js"></script>
