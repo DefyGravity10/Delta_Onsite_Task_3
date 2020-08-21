@@ -1,9 +1,11 @@
 var str;
 var stack_of_obj=[];
-var k=0;
+var button_click=0;
 
 var oreo_count=0;
 var oreo_limit=3;
+
+var startOreo_x;
 
 var canvas = document.getElementById("canvas");
 canvas.width=window.innerWidth-40;
@@ -13,10 +15,48 @@ ctx.strokeStyle="black";
 
 ctx.lineWidth=3;
 
+function Stack(){
+    stack_of_obj.length=0;
+    str = document.getElementById("string").value;
+    button_click++;
+    for(var i=0; i<str.length; )
+    {
+        if(str[i]=="o")
+        {
+            stack_of_obj.push(new biscuit());
+            i++;
+        }
+        else if(str[i]=="r" && str[i+1]=="e")
+        {
+            stack_of_obj.push(new cream());
+            i+=2;
+        }
+    }
+    console.log(stack_of_obj);
+
+    draw_stack();
+}
+
+function x_cordinate()
+{    
+    if(button_click==1)
+    {
+        return 300;
+    }
+    else if(button_click==2)
+    {
+        return 950;
+    }
+    else if(button_click==3)
+    {
+        return 1550;
+    }
+}
+
 class biscuit{
     constructor(){
-        this.x= 500;
-        this.y= 500;
+        this.x= x_cordinate();
+        this.y= 600;
         this.id= "b";
     }
     draw() {
@@ -36,8 +76,8 @@ class biscuit{
 
 class cream{
     constructor(){
-        this.x= 502;
-        this.y= 500;
+        this.x= x_cordinate();
+        this.y= 600;
         this.id="c";
     }
     draw(){
@@ -53,30 +93,8 @@ class cream{
     }
 }
 
-function Stack(){
-    stack_of_obj.length=0;
-    str = document.getElementById("string").value;
-    for(var i=0; i<str.length; )
-    {
-        if(str[i]=="o")
-        {
-            stack_of_obj.push(new biscuit());
-            i++;
-        }
-        else if(str[i]=="r" && str[i+1]=="e")
-        {
-            stack_of_obj.push(new cream());
-            i+=2;
-        }
-        k++;
-    }
-    console.log(stack_of_obj);
-
-    draw_stack();
-}
-
 function draw_stack(){
-    var stack_start=500;
+    var stack_start=600;
     for(var j=0; j<stack_of_obj.length; j++)
     {
         if(j!=0)
