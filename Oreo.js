@@ -8,6 +8,7 @@ canvas.height=window.innerHeight;
 var ctx = canvas.getContext("2d");
 ctx.strokeStyle="black";
 
+ctx.lineWidth=3;
 
 class biscuit{
     constructor(){
@@ -17,20 +18,33 @@ class biscuit{
     }
     draw() {
         ctx.beginPath();
-        ctx.rect(this.x,this.y,200,10);
-        ctx.stroke();
+        ctx.ellipse(this.x,this.y,200,40,0,0,Math.PI*2);
+        ctx.ellipse(this.x, this.y + 20,200,40,0,0,Math.PI*2);
+        ctx.moveTo(this.x-200,this.y);
+        ctx.lineTo(this.x-200, this.y + 20);
+        
+        ctx.moveTo(this.x+200,this.y+20);
+        ctx.lineTo(this.x+200,this.y); 
+        ctx.closePath();
         ctx.fill();
+        ctx.stroke();
     }
 }
 
 class cream{
     constructor(){
-        this.x= 505;
-        this.y= 490;
+        this.x= 502;
+        this.y= 500;
         this.id="c";
     }
     draw(){
-        ctx.rect(this.x,this.y,190,5);
+        ctx.beginPath();
+        ctx.ellipse(this.x,this.y,190,40,0,0,Math.PI*2);
+        ctx.ellipse(this.x, this.y + 10,190,40,0,0,Math.PI*2);
+        ctx.moveTo(this.x-190,this.y);
+        ctx.lineTo(this.x-190, this.y + 10);
+        ctx.moveTo(this.x+190,this.y+10);
+        ctx.lineTo(this.x+190,this.y);   
         ctx.fill();
         ctx.stroke();
     }
@@ -64,7 +78,15 @@ function draw_stack(){
     {
         if(j!=0)
         {
-            stack_start-=20;
+            if(stack_of_obj[j].id=="b")
+            {
+                stack_start-=20;
+            }
+            else if(stack_of_obj[j].id=="c")
+            {
+                stack_start-=10;
+            }
+            
             stack_of_obj[j].y=stack_start;
         }
 
