@@ -2,9 +2,12 @@ var str;
 var stack_of_obj=[];
 var k=0;
 
+var oreo_count=0;
+var oreo_limit=3;
+
 var canvas = document.getElementById("canvas");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+canvas.width=window.innerWidth-40;
+canvas.height=window.innerHeight-75;
 var ctx = canvas.getContext("2d");
 ctx.strokeStyle="black";
 
