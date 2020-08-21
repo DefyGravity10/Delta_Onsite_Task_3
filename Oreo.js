@@ -139,7 +139,7 @@ function draw_stack(){
 
         if(stack_of_obj[j].id=="b")
         {
-            ctx.fillStyle="brown";
+            ctx.fillStyle="rgb(71,48,48)";
         }
         else{
             ctx.fillStyle="white";
