@@ -6,6 +6,7 @@ var oreo_count=0;
 var oreo_limit=3;
 
 var startOreo_x;
+var gen_value=true;
 
 document.getElementById("page2").style.display="none";
 
@@ -33,16 +34,27 @@ function Stack(){
         {
             stack_of_obj.push(new biscuit());
             i++;
+            gen_value=true;
         }
         else if(str[i]=="r" && str[i+1]=="e")
         {
             stack_of_obj.push(new cream());
             i+=2;
+            gen_value=true;
+        }
+        else{
+            document.getElementById("string").value="Incorrect";
+            gen_value=false;
+            button_click--;
+            break;
         }
     }
     console.log(stack_of_obj);
 
-    draw_stack();
+    if(gen_value==true)
+    {
+        draw_stack();
+    }
 }
 
 function x_cordinate()
@@ -58,6 +70,12 @@ function x_cordinate()
     else if(button_click==3)
     {
         return 1550;
+    }
+    else if(button_click>3)
+    {
+        document.getElementById("string").value="Limit Reached";
+        document.getElementById("oo").disabled=true;
+        gen_value=false;
     }
 }
 
